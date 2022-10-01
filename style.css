@@ -1,51 +1,69 @@
-html {
-    background-color: rgb(241, 231, 133);
+body {
+  background-color: rgb(241, 231, 133);
 }
 
 .container {
-    background-color: rgb(100, 98, 98);
-    width: 48%;
-    padding-top: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    border-radius: 50px;
-    height: 500px;
+  background-color: rgb(100, 98, 98);
+  width: 450px;
+  padding-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  border-radius: 50px;
+  height: 500px;
 }
 
 .screen {
-    background-color: rgb(112, 161, 112);
-    border: 2px solid rgb(73, 70, 70); 
-    width: 60%;
-    height: 50px;
-    margin: auto;
-    margin-top: 20px;
-    margin-bottom: 50px;
-    border-radius: 5px;
+  background-color: rgb(112, 161, 112);
+  border: 2px solid rgb(73, 70, 70);
+  width: 60%;
+  height: 50px;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  border-radius: 5px;
 }
 
-
 .btnContainer {
-    grid-template-columns: 100px 50px 100px;
-    grid-template-rows: 80px auto 80px; 
-    column-gap: 10px;
-    row-gap: 15px;
+  border: 2px solid red;
+  grid-template-columns: 100px 50px 100px;
+  grid-template-rows: 80px auto 80px;
+  column-gap: 10px;
+  row-gap: 5px;
+}
+
+.btnContainer .pwrButton {
+  border: 2px solid blue;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 8px;
 }
 
 .row {
-    display: flex;
-    height: 75px;
-    justify-content: space-evenly;
-    width: 70%;
-    margin: auto;
-    margin-bottom: 25px;
+  border: 2px solid orange;
+  display: flex;
+  height: 60px;
+  justify-content: space-evenly;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 0px;
 }
 
+.numButton,
+.operand,
 .button {
-    background-color: lightgray;
-    width: 65px;
-    height: 65px;
-    font-size: 24px;
-    border-radius: 8px;
+  background-color: lightgray;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  border-radius: 8px;
+}
 
+#onButton {
+  background-color: red;
+}
+
+#offButton {
+  background-color: aqua;
 }

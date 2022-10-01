@@ -1,38 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="screen">Screen</div>
-        <div class="break"></div>
-        <div class="btnContainer">
-            <div class="row">            
-                <span class="button" id="1">1</span>
-                <span class="button" id="2">2</span>
-                <span class="button" id="3">3</span>
-                <span class="button" id="4">4</span>
-            </div>
-            <div class="row">            
-                <span class="button" id="5">5</span>
-                <span class="button" id="6">6</span>
-                <span class="button" id="7">7</span>
-                <span class="button" id="8">8</span>
-            </div>
-            <div class="row">            
-                <span class="button" id="9">9</span>
-                <span class="button" id="0">0</span>
-                <span class="button" id="+">+</span>
-                <span class="button" id="-">-</span>
-            </div>
+      <div class="screen"></div>
+      <div class="break"></div>
+      <div class="btnContainer">
+        <div class="row">
+          <span class="button" id="onButton">On</span>
+          <span class="button" id="offButton">Off</span>
+          <span class="button" id="delButton">DEL</span>
+          <span class="operand" id="equal">=</span>
         </div>
+        <div class="row">
+          <span class="numButton" id="1">1</span>
+          <span class="numButton" id="2">2</span>
+          <span class="numButton" id="3">3</span>
+          <span class="operand" id="add">+</span>
+        </div>
+        <div class="row">
+          <span class="numButton" id="4">4</span>
+          <span class="numButton" id="5">5</span>
+          <span class="numButton" id="6">6</span>
+          <span class="operand" id="sub">-</span>
+        </div>
+        <div class="row">
+          <span class="numButton" id="7">7</span>
+          <span class="numButton" id="8">8</span>
+          <span class="numButton" id="9">9</span>
+          <span class="operand" id="mul">x</span>
+        </div>
+        <div class="row">
+            <span class="numButton" id="0">0</span>
+            <span class="numButton" id="decimal">.</span>
+            <span class="operand" id="div">/</span>
+        </div>
+      </div>
     </div>
-         
+
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
