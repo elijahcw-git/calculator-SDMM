@@ -9,37 +9,41 @@
   </head>
   <body>
     <div class="container">
-      <div class="screen"></div>
+      <div class="screen-container">
+        <span class="secondDisplay" id="previousNum">previous</span>
+        <div class="firstDisplay" id="currentNum">current</div>
+      </div>
       <div class="break"></div>
       <div class="btnContainer">
         <div class="row">
           <span class="button" id="onButton">On</span>
           <span class="button" id="offButton">Off</span>
           <span class="button" id="delButton">DEL</span>
-          <span class="operand" id="equal">=</span>
+          <span class="button" id="equal">=</span>
         </div>
         <div class="row">
           <span class="numButton" id="1">1</span>
           <span class="numButton" id="2">2</span>
           <span class="numButton" id="3">3</span>
-          <span class="operand" id="add">+</span>
+          <span class="operand" id="+">+</span>
         </div>
         <div class="row">
           <span class="numButton" id="4">4</span>
           <span class="numButton" id="5">5</span>
           <span class="numButton" id="6">6</span>
-          <span class="operand" id="sub">-</span>
+          <span class="operand" id="-">-</span>
         </div>
         <div class="row">
           <span class="numButton" id="7">7</span>
           <span class="numButton" id="8">8</span>
           <span class="numButton" id="9">9</span>
-          <span class="operand" id="mul">x</span>
+          <span class="operand" id="*">x</span>
         </div>
         <div class="row">
+          <span class="button" id="clearButton">CLR</span>
             <span class="numButton" id="0">0</span>
-            <span class="numButton" id="decimal">.</span>
-            <span class="operand" id="div">/</span>
+            <span class="button" id="decimal">.</span>
+            <span class="operand" id="/">/</span>
         </div>
       </div>
     </div>

@@ -1,63 +1,76 @@
-const screen = document.querySelector(".screen");
+let firstNum = "";
+let secondNum = "";
+let numMemory = 0;
+let hasOperand = false;
+let firstOperator = "";
+let secondOperator = "";
+let buttonVal = "";
+
+const firstDisplay = document.querySelector(".firstDisplay");
+const secondDisplay = document.querySelector(".secondDisplay");
+
 const numButtons = document.querySelectorAll(".numButton");
 const operand = document.querySelectorAll(".operand");
-const onButton = document.getElementById("onButton");
-const offButton = document.getElementById("offButton");
-const delButton = document.getElementById("delButton");
 
-let num1 = num2 = 0;
+const equalButton = document.getElementById("equal");
+const decimalButton = document.getElementById("decimal");
 
-onButton.addEventListener("click", () => {
-  console.log("on");
-});
-
-offButton.addEventListener("click", () => {
-  console.log("off");
-  screen.textContent = "";
-});
-
-screen.addEventListener("click", (e) => {
-  e.target.textContent = "";
-});
-
-delButton.addEventListener("click", (e) => {
-  screen.textContent = "";
-});
+const clearButton = document.getElementById('clearButton') 
+const deleteButton = document.getElementById('delButton') 
 
 numButtons.forEach((numButtons) => {
   numButtons.addEventListener("click", (e) => {
-    if (screen.textContent.length <= 10)
-      screen.textContent += e.target.textContent;
+    getInput(Number(e.target.id));
   });
 });
 
 operand.forEach((operand) => {
   operand.addEventListener("click", (e) => {
-        getNums(num1, num2)
-    
+    getOperand(e.target.id);
   });
 });
 
-function calculate(num1, operand, num2)
-{
-    let result = 0;
+function getInput(number) {
+  if (!hasOperand) {
+    firstNum += Number(number);
+    firstDisplay.textContent = firstNum;
+  } else {
+    secondNum += Number(number);
+    firstDisplay.textContent = secondNum;
+  }
+}
 
+equalButton.addEventListener("click", () => {
+  calculate(firstNum, secondNum, firstOperator);
+});
 
-    switch (operand){
-        case '+':
-            result = num1 + num2;
-            return result;
-        case '-':
-            result = num1 - num2;
-            return result;
-        case 'x':
-            result = num1 * num2;
-            return result;
-        case '/':
-            result = num1 / num2;
-            return result;        
-    }
-    if (operand === '='){
-        screen.textContent = result;
-    }
+function getOperand(operator) {
+  hasOperand = true;
+  secondDisplay.textContent = firstNum;
+  firstOperator = operator;
+  firstDisplay.innerText = operator;
+}
+
+function calculate(firstNum, secondNum, operator) {
+  let result = 0;
+  firstNum = Number(firstNum);
+  secondNum = Number(secondNum);
+  switch (operator) {
+    case "+":
+      result = firstNum + secondNum;
+      firstDisplay.textContent = result;
+      return result;
+    case "-":
+      result = firstNum - secondNum;
+      firstDisplay.textContent = result;
+      return result;
+    case "*":
+      result = firstNum * secondNum;
+      firstDisplay.textContent = result;
+      return result;
+    case "/":
+      result = firstNum / secondNum;
+      firstDisplay.textContent = result;
+      return result;
+  } 
 }

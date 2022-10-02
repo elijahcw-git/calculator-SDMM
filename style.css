@@ -4,8 +4,9 @@ body {
 
 .container {
   background-color: rgb(100, 98, 98);
-  width: 450px;
+  width: 380px;
   padding-top: 15px;
+  margin-top: 50px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -13,19 +14,21 @@ body {
   height: 500px;
 }
 
-.screen {
+.screen-container {
   background-color: rgb(112, 161, 112);
   border: 2px solid rgb(73, 70, 70);
   width: 60%;
   height: 50px;
   margin: auto;
   margin-top: 20px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .btnContainer {
-  border: 2px solid red;
   grid-template-columns: 100px 50px 100px;
   grid-template-rows: 80px auto 80px;
   column-gap: 10px;
