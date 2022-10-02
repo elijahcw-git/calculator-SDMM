@@ -5,6 +5,7 @@ let hasOperand = false;
 let firstOperator = "";
 let secondOperator = "";
 let buttonVal = "";
+let result = 0;
 
 const firstDisplay = document.querySelector(".firstDisplay");
 const secondDisplay = document.querySelector(".secondDisplay");
@@ -15,8 +16,8 @@ const operand = document.querySelectorAll(".operand");
 const equalButton = document.getElementById("equal");
 const decimalButton = document.getElementById("decimal");
 
-const clearButton = document.getElementById('clearButton') 
-const deleteButton = document.getElementById('delButton') 
+const clearButton = document.getElementById("clearButton");
+const deleteButton = document.getElementById("delButton");
 
 numButtons.forEach((numButtons) => {
   numButtons.addEventListener("click", (e) => {
@@ -58,19 +59,20 @@ function calculate(firstNum, secondNum, operator) {
   switch (operator) {
     case "+":
       result = firstNum + secondNum;
-      firstDisplay.textContent = result;
-      return result;
+      break;
     case "-":
       result = firstNum - secondNum;
-      firstDisplay.textContent = result;
-      return result;
+      break;
     case "*":
       result = firstNum * secondNum;
-      firstDisplay.textContent = result;
-      return result;
+      break;
     case "/":
       result = firstNum / secondNum;
-      firstDisplay.textContent = result;
-      return result;
-  } 
+      break;
+  }
+  firstDisplay.innerText = result;
+  secondDisplay.innerText = result;
+  secondNum = Number(secondDisplay.innerText);
+  hasOperand = false;
+  return result;
 }
