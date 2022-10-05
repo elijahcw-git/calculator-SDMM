@@ -1,10 +1,12 @@
+@import url('http://fonts.cdnfonts.com/css/scientific-calculator-lcd');
+
 body {
-  background-color: rgb(241, 231, 133);
+  background-color: rgb(0, 0, 0);
 }
 
 .container {
   background-color: rgb(100, 98, 98);
-  width: 380px;
+  width: 400px;
   padding-top: 15px;
   margin-top: 50px;
   margin-left: auto;
@@ -15,17 +17,34 @@ body {
 }
 
 .screen-container {
+  font-family: 'Scientific Calculator LCD', sans-serif;
   background-color: rgb(112, 161, 112);
   border: 2px solid rgb(73, 70, 70);
-  width: 60%;
-  height: 50px;
+  width: 80%;
+  height: 60px;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 30px;
-  border-radius: 5px;
+  padding-bottom: 30px;
+}
+
+.screen-top-row {
+  border: 2px solid orange;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding-bottom: 20px;
+  height: 20px;
+}
+
+.screen-bottom-row {
+  border: 2px solid blue;
+  text-align: right;
+  padding-top: 15px;
+  padding-bottom: 4px;
+  padding-right: 3px;
+  font-size: 24px;
+  height: 24px;
+  vertical-align: baseline;
 }
 
 .btnContainer {
@@ -44,7 +63,6 @@ body {
 }
 
 .row {
-  border: 2px solid orange;
   display: flex;
   height: 60px;
   justify-content: space-evenly;

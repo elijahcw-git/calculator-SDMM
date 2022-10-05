@@ -4,16 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/segment7" type="text/css"/>
   </head>
   <body>
     <div class="container">
       <div class="screen-container">
-        <span class="secondDisplay" id="previousNum">previous</span>
-        <div class="firstDisplay" id="currentNum">current</div>
+        <div class="screen-top-row">
+          <span class="secondaryDisplay"></span>
+          <span class="operatorDisplay"></span>
+          <span class="mainDisplay"></span>
+        </div>
+        <div class="screen-bottom-row">
+          <div class="resultDisplay"></div>
+        </div>
       </div>
-      <div class="break"></div>
       <div class="btnContainer">
         <div class="row">
           <span class="button" id="onButton">On</span>

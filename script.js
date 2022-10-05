@@ -1,14 +1,17 @@
-let firstNum = "";
-let secondNum = "";
+let firstOperand = "";
+let secondOperand = "";
 let numMemory = 0;
-let hasOperand = false;
-let firstOperator = "";
-let secondOperator = "";
-let buttonVal = "";
 let result = 0;
+let hasOperator = false;
+let operator = "";
+let continuousOperation = false;
+let hasDecimal = false;
+let decimalLength = 0;
 
-const firstDisplay = document.querySelector(".firstDisplay");
-const secondDisplay = document.querySelector(".secondDisplay");
+const mainDisplay = document.querySelector(".mainDisplay");
+const secondaryDisplay = document.querySelector(".secondaryDisplay");
+const operatorDisplay = document.querySelector(".operatorDisplay");
+const resultDisplay = document.querySelector(".resultDisplay");
 
 const numButtons = document.querySelectorAll(".numButton");
 const operand = document.querySelectorAll(".operand");
@@ -19,60 +22,113 @@ const decimalButton = document.getElementById("decimal");
 const clearButton = document.getElementById("clearButton");
 const deleteButton = document.getElementById("delButton");
 
-numButtons.forEach((numButtons) => {
-  numButtons.addEventListener("click", (e) => {
-    getInput(Number(e.target.id));
-  });
+clearButton.addEventListener("click", () => {
+  updateAllDisplays("", "", "");
+  firstOperand = secondOperand = "";
+  numMemory = result = 0;
+  resultDisplay.textContent = result;
 });
 
-operand.forEach((operand) => {
-  operand.addEventListener("click", (e) => {
-    getOperand(e.target.id);
+decimalButton.addEventListener("click", () => {
+  if (!hasDecimal) insertDecimal();
+  hasDecimal = true;
+});
+
+numButtons.forEach((numButtons) => {
+  numButtons.addEventListener("click", (e) => {
+    if (mainDisplay.innerText.length < 10) getInput(Number(e.target.id));
   });
 });
 
 function getInput(number) {
-  if (!hasOperand) {
-    firstNum += Number(number);
-    firstDisplay.textContent = firstNum;
+  if (!hasOperator) {
+    firstOperand += number;
+    updateMainDisplay(firstOperand);
   } else {
-    secondNum += Number(number);
-    firstDisplay.textContent = secondNum;
+    secondOperand += number;
+    updateMainDisplay(secondOperand);
+  }
+}
+
+operand.forEach((operand) => {
+  operand.addEventListener("click", (e) => {
+    getOperator(e.target.id);
+  });
+});
+
+function getOperator(currentOperator) {
+  hasDecimal = false;
+  if (hasOperator) {
+    calculate();
+    firstOperand = result;
+    secondOperand = "";
+    operator = currentOperator;
+    updateAllDisplays("", result, operator, result);
+  } else {
+    hasOperator = true;
+    operator = currentOperator;
+    updateAllDisplays("", firstOperand, operator, result);
   }
 }
 
 equalButton.addEventListener("click", () => {
-  calculate(firstNum, secondNum, firstOperator);
+  if (hasOperator) {
+    hasDecimal = false;
+    calculate();
+  }
 });
 
-function getOperand(operator) {
-  hasOperand = true;
-  secondDisplay.textContent = firstNum;
-  firstOperator = operator;
-  firstDisplay.innerText = operator;
-}
-
-function calculate(firstNum, secondNum, operator) {
-  let result = 0;
-  firstNum = Number(firstNum);
-  secondNum = Number(secondNum);
+function calculate() {
+  firstOperand = Number(firstOperand);
+  secondOperand = Number(secondOperand);
   switch (operator) {
     case "+":
-      result = firstNum + secondNum;
+      result = firstOperand + secondOperand;
       break;
     case "-":
-      result = firstNum - secondNum;
+      result = firstOperand - secondOperand;
       break;
     case "*":
-      result = firstNum * secondNum;
+      result = firstOperand * secondOperand;
       break;
     case "/":
-      result = firstNum / secondNum;
+      result = firstOperand / secondOperand;
       break;
   }
-  firstDisplay.innerText = result;
-  secondDisplay.innerText = result;
-  secondNum = Number(secondDisplay.innerText);
-  hasOperand = false;
-  return result;
+  firstOperand = parseFloat(result);
+  secondOperand = "";
+  updateAllDisplays(firstOperand, secondOperand, "");
+  updateResultDisplay(result)
+}
+
+function insertDecimal() {
+  if (hasOperator) {
+    secondOperand += ".";
+    updateMainDisplay(secondOperand);
+  } else {
+    firstOperand += ".";
+    updateMainDisplay(firstOperand);
+  }
+}
+
+function updateMainDisplay(value) {
+  mainDisplay.textContent = value;
+}
+
+function updateSecondaryDisplay(value) {
+  secondaryDisplay.textContent = value;
+}
+
+function updateOperatorDisplay(value) {
+  operatorDisplay.textContent = value;
+}
+
+function updateResultDisplay(value) {
+  resultDisplay.innerText = parseFloat(result);
+}
+
+function updateAllDisplays(main, secondary, operator) {
+  updateMainDisplay(main);
+  updateSecondaryDisplay(secondary);
+  updateOperatorDisplay(operator);
 }
