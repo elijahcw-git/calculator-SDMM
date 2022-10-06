@@ -4,7 +4,7 @@
 
 You can use it [here]()
 
-![calculator](img\calcTN.png)
+![calculator](./img/calcTN.png)
 
 
 ### Summary
