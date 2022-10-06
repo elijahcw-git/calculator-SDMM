@@ -1,5 +1,6 @@
 let firstOperand = "";
 let secondOperand = "";
+let value = 0;
 let numMemory = 0;
 let result = 0;
 let hasOperator = false;
@@ -22,10 +23,13 @@ const decimalButton = document.getElementById("decimal");
 const clearButton = document.getElementById("clearButton");
 const deleteButton = document.getElementById("delButton");
 
+
+
 clearButton.addEventListener("click", () => {
   updateAllDisplays("", "", "");
   firstOperand = secondOperand = "";
   numMemory = result = 0;
+  hasOperator = false;
   resultDisplay.textContent = result;
 });
 
@@ -60,14 +64,14 @@ function getOperator(currentOperator) {
   hasDecimal = false;
   if (hasOperator) {
     calculate();
-    firstOperand = result;
-    secondOperand = "";
+    firstOperand = result.toFixed(3);
+    //secondOperand = "";
     operator = currentOperator;
-    updateAllDisplays("", result, operator, result);
+    updateAllDisplays("", result.toFixed(3), operator);
   } else {
     hasOperator = true;
     operator = currentOperator;
-    updateAllDisplays("", firstOperand, operator, result);
+    updateAllDisplays("", firstOperand, operator);
   }
 }
 
@@ -80,7 +84,7 @@ equalButton.addEventListener("click", () => {
 
 function calculate() {
   firstOperand = Number(firstOperand);
-  secondOperand = Number(secondOperand);
+  //secondOperand = Number(secondOperand);
   switch (operator) {
     case "+":
       result = firstOperand + secondOperand;
@@ -95,10 +99,12 @@ function calculate() {
       result = firstOperand / secondOperand;
       break;
   }
+  hasOperator = false;
   firstOperand = parseFloat(result);
   secondOperand = "";
+  currentOperator = "";
   updateAllDisplays(firstOperand, secondOperand, "");
-  updateResultDisplay(result)
+  updateResultDisplay()
 }
 
 function insertDecimal() {
@@ -119,12 +125,12 @@ function updateSecondaryDisplay(value) {
   secondaryDisplay.textContent = value;
 }
 
-function updateOperatorDisplay(value) {
-  operatorDisplay.textContent = value;
+function updateOperatorDisplay(op) {
+  operatorDisplay.textContent = op;
 }
 
-function updateResultDisplay(value) {
-  resultDisplay.innerText = parseFloat(result);
+function updateResultDisplay() {
+  resultDisplay.innerText = parseFloat(result.toFixed(3));
 }
 
 function updateAllDisplays(main, secondary, operator) {
