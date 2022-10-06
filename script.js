@@ -1,5 +1,5 @@
 let firstOperand = "";
-let secondOperand = "";
+let secondOperand = ""
 let value = 0;
 let numMemory = 0;
 let result = 0;
@@ -13,22 +13,37 @@ const mainDisplay = document.querySelector(".mainDisplay");
 const secondaryDisplay = document.querySelector(".secondaryDisplay");
 const operatorDisplay = document.querySelector(".operatorDisplay");
 const resultDisplay = document.querySelector(".resultDisplay");
-
 const numButtons = document.querySelectorAll(".numButton");
 const operand = document.querySelectorAll(".operand");
-
 const equalButton = document.getElementById("equal");
 const decimalButton = document.getElementById("decimal");
-
 const clearButton = document.getElementById("clearButton");
 const deleteButton = document.getElementById("delButton");
+const memorySaveButton = document.getElementById('memory-save')
+const memoryRecallButton = document.getElementById('memory-recall')
+const memoryClearButton = document.getElementById('memory-clear')
+const memoryScreen = document.getElementById('memory')
 
+memorySaveButton.addEventListener('click', ()=>{
+  memory.textContent = mainDisplay.textContent;
+  numMemory = Number(memory.textContent)
+})
 
+memoryRecallButton.addEventListener('click', ()=>{
+  if(!numMemory) return;
+  mainDisplay.textContent = numMemory;
+  secondOperand = numMemory;
+})
+
+memoryClearButton.addEventListener('click', ()=>{
+  memory.textContent = 'No Memory';
+  numMemory = 0;
+})
 
 clearButton.addEventListener("click", () => {
   updateAllDisplays("", "", "");
   firstOperand = secondOperand = "";
-  numMemory = result = 0;
+  result = 0;
   hasOperator = false;
   resultDisplay.textContent = result;
 });
@@ -65,9 +80,8 @@ function getOperator(currentOperator) {
   if (hasOperator) {
     calculate();
     firstOperand = result.toFixed(3);
-    //secondOperand = "";
     operator = currentOperator;
-    updateAllDisplays("", result.toFixed(3), operator);
+    updateAllDisplays("", result, operator);
   } else {
     hasOperator = true;
     operator = currentOperator;
@@ -84,7 +98,7 @@ equalButton.addEventListener("click", () => {
 
 function calculate() {
   firstOperand = Number(firstOperand);
-  //secondOperand = Number(secondOperand);
+  secondOperand = Number(secondOperand);
   switch (operator) {
     case "+":
       result = firstOperand + secondOperand;
@@ -100,7 +114,7 @@ function calculate() {
       break;
   }
   hasOperator = false;
-  firstOperand = parseFloat(result);
+  firstOperand = result;
   secondOperand = "";
   currentOperator = "";
   updateAllDisplays(firstOperand, secondOperand, "");

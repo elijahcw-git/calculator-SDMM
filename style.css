@@ -11,7 +11,6 @@ body {
 }
 
 .container {
-  background-color: rgb(100, 98, 98);
   width: 352px;
   padding-top: 15px;
   margin-top: 50px;
@@ -27,8 +26,7 @@ body {
   border: 2px solid rgb(73, 70, 70);
   width: 99%;
   height: 100px;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   margin-top: -15px;
   word-wrap: break-word;
   opacity: 0.5;
@@ -39,12 +37,14 @@ body {
   justify-content: flex-start;
   padding-bottom: 20px;
   height: 25px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .mainDisplay,
 .secondaryDisplay,
 .operatorDisplay {
-  border: 2px solid red;
   padding-right: 3px;
 }
 
@@ -59,10 +59,18 @@ body {
 }
 
 .btnContainer {
+  background: cornflowerblue;
+  width: 352px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  padding-top: 20px;
+  height: 360px;
   grid-template-columns: 100px 50px 100px;
   grid-template-rows: 80px auto 80px;
   column-gap: 10px;
   row-gap: 5px;
+  padding-bottom: 10px;
 }
 
 .row {
@@ -78,8 +86,9 @@ body {
 .operand,
 .button {
   background-color: lightgray;
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  border-radius: 8px;
+  border: 1px solid black;
+  width: 63px;
+  height: 63px;
+  font-size: 25px;
+  border-radius: 4px;
 }
