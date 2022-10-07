@@ -2,7 +2,7 @@
 
 ### Task 6 in Software Development Mastermind
 
-You can use it [here]()
+You can use it [here](https://elijahcw-git.github.io/calculator-SDMM/)
 
 ![calculator](./img/calcTN.png)
 
