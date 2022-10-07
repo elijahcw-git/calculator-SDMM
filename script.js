@@ -1,5 +1,5 @@
 let firstOperand = "";
-let secondOperand = ""
+let secondOperand = "";
 let value = 0;
 let numMemory = 0;
 let result = 0;
@@ -7,7 +7,7 @@ let hasOperator = false;
 let operator = "";
 let continuousOperation = false;
 let hasDecimal = false;
-let decimalLength = 0;
+// let decimalLength = 0;
 
 const mainDisplay = document.querySelector(".mainDisplay");
 const secondaryDisplay = document.querySelector(".secondaryDisplay");
@@ -19,26 +19,26 @@ const equalButton = document.getElementById("equal");
 const decimalButton = document.getElementById("decimal");
 const clearButton = document.getElementById("clearButton");
 const deleteButton = document.getElementById("delButton");
-const memorySaveButton = document.getElementById('memory-save')
-const memoryRecallButton = document.getElementById('memory-recall')
-const memoryClearButton = document.getElementById('memory-clear')
-const memoryScreen = document.getElementById('memory')
+const memorySaveButton = document.getElementById("memory-save");
+const memoryRecallButton = document.getElementById("memory-recall");
+const memoryClearButton = document.getElementById("memory-clear");
+const memoryScreen = document.getElementById("memory");
 
-memorySaveButton.addEventListener('click', ()=>{
-  memory.textContent = mainDisplay.textContent;
-  numMemory = Number(memory.textContent)
-})
+memorySaveButton.addEventListener("click", () => {
+  memory.textContent = secondaryDisplay.textContent;
+  numMemory = Number(memory.textContent);
+});
 
-memoryRecallButton.addEventListener('click', ()=>{
-  if(!numMemory) return;
+memoryRecallButton.addEventListener("click", () => {
+  if (!numMemory) return;
   mainDisplay.textContent = numMemory;
   secondOperand = numMemory;
-})
+});
 
-memoryClearButton.addEventListener('click', ()=>{
-  memory.textContent = 'No Memory';
+memoryClearButton.addEventListener("click", () => {
+  memory.textContent = "No Memory";
   numMemory = 0;
-})
+});
 
 clearButton.addEventListener("click", () => {
   updateAllDisplays("", "", "");
@@ -60,11 +60,12 @@ numButtons.forEach((numButtons) => {
 });
 
 function getInput(number) {
-  if (!hasOperator) {
+  debugger;
+  if (!hasOperator && !result) {
     firstOperand += number;
-    updateMainDisplay(firstOperand);
+    updateSecondaryDisplay(firstOperand);
   } else {
-    secondOperand += number;
+    secondOperand += String(number);
     updateMainDisplay(secondOperand);
   }
 }
@@ -76,23 +77,27 @@ operand.forEach((operand) => {
 });
 
 function getOperator(currentOperator) {
+  debugger;
+
   hasDecimal = false;
   if (hasOperator) {
     calculate();
-    firstOperand = result.toFixed(3);
-    operator = currentOperator;
-    updateAllDisplays("", result, operator);
-  } else {
-    hasOperator = true;
-    operator = currentOperator;
-    updateAllDisplays("", firstOperand, operator);
-  }
+    secondOperand = 0;
+    updateMainDisplay("");
+  } 
+
+  hasOperator = true;
+  operator = currentOperator;
+  updateOperatorDisplay(operator);
 }
 
 equalButton.addEventListener("click", () => {
+  debugger;
   if (hasOperator) {
-    hasDecimal = false;
     calculate();
+    secondOperand = 0;
+    updateOperatorDisplay("");
+    mainDisplay.textContent = "";
   }
 });
 
@@ -114,11 +119,11 @@ function calculate() {
       break;
   }
   hasOperator = false;
+  operator = "";
   firstOperand = result;
-  secondOperand = "";
-  currentOperator = "";
-  updateAllDisplays(firstOperand, secondOperand, "");
-  updateResultDisplay()
+  secondaryDisplay.textContent = firstOperand;
+  updateMainDisplay(secondOperand);
+  updateResultDisplay();
 }
 
 function insertDecimal() {
@@ -132,11 +137,13 @@ function insertDecimal() {
 }
 
 function updateMainDisplay(value) {
-  mainDisplay.textContent = value;
+  const number = Number(value);
+  mainDisplay.textContent = parseFloat(number.toFixed(3));
 }
 
 function updateSecondaryDisplay(value) {
-  secondaryDisplay.textContent = value;
+  const number = Number(value);
+  secondaryDisplay.textContent = parseFloat(number.toFixed(3));
 }
 
 function updateOperatorDisplay(op) {
