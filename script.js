@@ -120,18 +120,19 @@ function calculate() {
   hasOperator = false;
   operator = "";
   firstOperand = result;
-  secondaryDisplay.textContent = firstOperand;
+  updateSecondaryDisplay(firstOperand);
   updateMainDisplay(secondOperand);
   updateResultDisplay();
 }
 
 function insertDecimal() {
+  debugger
   if (hasOperator) {
     secondOperand += ".";
     updateMainDisplay(secondOperand);
   } else {
     firstOperand += ".";
-    updateMainDisplay(firstOperand);
+    updateSecondaryDisplay(firstOperand);
   }
 }
 
