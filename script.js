@@ -7,7 +7,6 @@ let hasOperator = false;
 let operator = "";
 let continuousOperation = false;
 let hasDecimal = false;
-// let decimalLength = 0;
 
 const mainDisplay = document.querySelector(".mainDisplay");
 const secondaryDisplay = document.querySelector(".secondaryDisplay");
@@ -84,7 +83,7 @@ function getOperator(currentOperator) {
     calculate();
     secondOperand = 0;
     updateMainDisplay("");
-  } 
+  }
 
   hasOperator = true;
   operator = currentOperator;
