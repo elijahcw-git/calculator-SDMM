@@ -40,11 +40,13 @@ memoryClearButton.addEventListener("click", () => {
 });
 
 clearButton.addEventListener("click", () => {
-  updateAllDisplays("", "", "");
   firstOperand = secondOperand = "";
   result = 0;
   hasOperator = false;
-  resultDisplay.textContent = result;
+  resultDisplay.textContent = "";
+  secondaryDisplay.textContent = "";
+  operatorDisplay.textContent = "";
+  mainDisplay.textContent = "";
 });
 
 decimalButton.addEventListener("click", () => {
@@ -59,7 +61,6 @@ numButtons.forEach((numButtons) => {
 });
 
 function getInput(number) {
-  debugger;
   if (!hasOperator && !result) {
     firstOperand += number;
     updateSecondaryDisplay(firstOperand);
@@ -76,22 +77,18 @@ operand.forEach((operand) => {
 });
 
 function getOperator(currentOperator) {
-  debugger;
-
   hasDecimal = false;
   if (hasOperator) {
     calculate();
     secondOperand = 0;
     updateMainDisplay("");
   }
-
   hasOperator = true;
   operator = currentOperator;
   updateOperatorDisplay(operator);
 }
 
 equalButton.addEventListener("click", () => {
-  debugger;
   if (hasOperator) {
     calculate();
     secondOperand = 0;
@@ -126,7 +123,6 @@ function calculate() {
 }
 
 function insertDecimal() {
-  debugger
   if (hasOperator) {
     secondOperand += ".";
     updateMainDisplay(secondOperand);
